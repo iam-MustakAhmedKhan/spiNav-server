@@ -4,6 +4,6 @@ import {createToken, notificationController} from '../controller/notification.co
 const router = Router();
 
 router.post('/send',notificationController);
-router.post('/post',createToken);
+router.post('/create',createToken);
 
 export default router
