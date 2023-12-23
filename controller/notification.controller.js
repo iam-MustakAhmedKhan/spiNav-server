@@ -22,7 +22,7 @@ const notificationController = async (req, res) => {
                 token: deviceToken.fcmToken,
             }));
             await admin.messaging().sendEach(messages);
-            res.status(200).json({ success: true });
+           return res.status(200).json({ success: true });
         }
 
 
