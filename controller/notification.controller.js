@@ -6,22 +6,24 @@ const notificationController = async (req, res) => {
         const { title, description } = req.body;
         const fcms = await Fcm.find({}).select("fcmToken -_id");
     
-        let dtoken = [];
+        // let dtoken = [];
     
-        fcms.forEach((t) => {
-            dtoken.push(t.fcmToken);
-        });
+        // fcms.forEach((t) => {
+        //     dtoken.push(t.fcmToken);
+        // });
 
-        // Send notification to multiple devices
-        const messages = fcms.map((deviceToken) => ({
-            notification: {
-                title,
-                body: description,
-            },
-            token: deviceToken.fcmToken,
-        }));
+        if (fcms.length) {
+            // Send notification to multiple devices
+            const messages = fcms.map((deviceToken) => ({
+                notification: {
+                    title,
+                    body: description,
+                },
+                token: deviceToken.fcmToken,
+            }));
+            await admin.messaging().sendEach(messages);
+        }
 
-        await admin.messaging().sendEach(messages);
 
         res.status(200).json({ success: true });
     } catch (error) {
