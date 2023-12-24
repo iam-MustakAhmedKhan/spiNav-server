@@ -17,6 +17,11 @@ const notificationController = async (req, res) => {
                 title,
                 body: description,
             },
+            webpush: {
+                fcm_options: {
+                    link: "https://spinav.netlify.app/",
+                },
+            },
             token: deviceToken.fcmToken,
         }));
 
