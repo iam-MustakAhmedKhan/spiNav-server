@@ -27,7 +27,11 @@ app.use(function (req, res, next) {
 });
 
 admin.initializeApp({
-    credential: admin.credential.cert("./googlToken.json"),
+    credential: admin.credential.cert({
+        privateKey: process.env.PRIVATE_KEY,
+        clientEmail: process.env.CLIENT_EMAIL,
+        projectId: process.env.PROJECT_ID,
+    }),
     projectId: "spi-nav",
 });
 
