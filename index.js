@@ -35,6 +35,7 @@ admin.initializeApp({
     projectId: "spi-nav",
 });
 
+
 app.use(notificationRouter);
 
 mongoose.connect(process.env.MONGO_DB).then(() => {
