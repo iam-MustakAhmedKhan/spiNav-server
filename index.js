@@ -32,7 +32,7 @@ admin.initializeApp({
         clientEmail: process.env.CLIENT_EMAIL,
         projectId: process.env.PROJECT_ID,
     }),
-    projectId: "spi-nav",
+    projectId: process.env.PROJECT_ID,
 });
 
 
